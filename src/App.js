@@ -20,9 +20,11 @@ const NHM = () => {
             let firstArgValue;
 
             if (eqType === 1) {
+                // Addition
                 firstArgValue = generateNumberInRange(0, 10 - secondArg);
             } else {
-                firstArgValue = generateNumberInRange(10, secondArg);
+                // Subtraction
+                firstArgValue = generateNumberInRange(secondArg, 10);
             }
 
             if (eqType === 1) {
