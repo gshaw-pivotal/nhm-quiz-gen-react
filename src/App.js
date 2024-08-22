@@ -28,15 +28,15 @@ const NHM = () => {
             if (eqType === 1) {
                 // Addition
                 if (secondArgFirst === 1) {
-                    newQuizProblems.push(`${secondArg} + ${firstArgValue} = ___`);
+                    newQuizProblems.push(`${secondArg} + ${firstArgValue}`);
                     console.log(`${secondArg} + ${firstArgValue}`);
                 } else {
-                    newQuizProblems.push(`${firstArgValue} + ${secondArg} = ___`);
+                    newQuizProblems.push(`${firstArgValue} + ${secondArg}`);
                     console.log(`${firstArgValue} + ${secondArg}`);
                 }
             } else {
                 // Subtraction
-                newQuizProblems.push(`${firstArgValue} - ${secondArg} = ___`);
+                newQuizProblems.push(`${firstArgValue} - ${secondArg}`);
                 console.log(`${firstArgValue} - ${secondArg}`);
             }
         }
@@ -49,7 +49,20 @@ const NHM = () => {
 
         for (let i = 0; i < numberOfProblems; i = i+2) {
             console.log(`${i} ${newQuizProblems[i]} ${newQuizProblems[i+1]}`)
-            twoColumns.push(<div><span>{newQuizProblems[i]}</span><span>{newQuizProblems[i+1]}</span></div>);
+            twoColumns.push(
+                <div className="quiz-problem-row">
+                    <span className="quiz-problem-col-1">
+                        <span className="quiz-problem-span-1">{newQuizProblems[i]}</span>
+                        <span className="quiz-problem-span"> = </span>
+                        <span className="quiz-problem-span">___</span>
+                    </span>
+                    <span className="quiz-problem-col-2">
+                        <span className="quiz-problem-span-1">{newQuizProblems[i+1]}</span>
+                        <span className="quiz-problem-span"> = </span>
+                        <span className="quiz-problem-span">___</span>
+                    </span>
+                </div>
+            );
         }
 
         setTwoColumnQuizProblem(twoColumns);
@@ -57,16 +70,20 @@ const NHM = () => {
 
     return (
         <div align="center">
-          <div>
-              <span>Second Arg:</span>
-              <input
+            <div>
+                <span>Second Arg:</span>
+                <input
+                  className="second-arg-box"
                 type="number"
                 onChange={(e) => {setSecondArg(e.target.value)}}
                 value={secondArg}
               />
           </div>
           <div>
-              <button onClick={generateQuiz}>Generate</button>
+              <button
+                  className="generate-button"
+                  onClick={generateQuiz}
+              >Generate</button>
           </div>
           <hr/>
           <div>

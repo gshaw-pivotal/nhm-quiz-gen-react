@@ -1,0 +1,27 @@
+.second-arg-box {
+    margin: 15px;
+}
+
+.generate-button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.quiz-problem-row {
+    font-size: 40px;
+    margin: 30px;
+}
+
+.quiz-problem-col-1 {
+    margin-right: 40px;
+}
+
+.quiz-problem-col-2 {
+    margin-left: 40px;
+}
+
+.quiz-problem-span-1 {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
