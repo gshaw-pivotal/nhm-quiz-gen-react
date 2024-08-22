@@ -4,6 +4,7 @@ const NHM = () => {
 
     const numberOfProblems = 20;
 
+    const [maxSumValue, setMaxSumValue] = useState(10);
     const [secondArg, setSecondArg] = useState(1);
     const [twoColumnQuizProblem, setTwoColumnQuizProblem] = useState([]);
 
@@ -21,10 +22,10 @@ const NHM = () => {
 
             if (eqType === 1) {
                 // Addition
-                firstArgValue = generateNumberInRange(0, 10 - secondArg);
+                firstArgValue = generateNumberInRange(0, maxSumValue - secondArg);
             } else {
                 // Subtraction
-                firstArgValue = generateNumberInRange(secondArg, 10);
+                firstArgValue = generateNumberInRange(secondArg, maxSumValue);
             }
 
             if (eqType === 1) {
@@ -73,25 +74,39 @@ const NHM = () => {
     return (
         <div align="center">
             <div>
+                <span>Max Sum Value (x + y =):</span>
+                <input
+                    className="max-sum-value-box"
+                    type="number"
+                    onChange={(e) => {
+                        setMaxSumValue(parseInt(e.target.value))
+                    }}
+                    value={maxSumValue}
+                />
+            </div>
+            <div>
                 <span>Second Arg:</span>
                 <input
-                  className="second-arg-box"
-                type="number"
-                onChange={(e) => {setSecondArg(parseInt(e.target.value))}}
-                value={secondArg}
-              />
-          </div>
-          <div>
-              <button
-                  className="generate-button"
-                  onClick={generateQuiz}
-              >Generate</button>
-          </div>
-          <hr/>
-          <div>
-              {twoColumnQuizProblem.map((item, i) => (<>{item}</>))}
-          </div>
-      </div>
+                    className="second-arg-box"
+                    type="number"
+                    onChange={(e) => {
+                        setSecondArg(parseInt(e.target.value))
+                    }}
+                    value={secondArg}
+                />
+            </div>
+            <div>
+                <button
+                    className="generate-button"
+                    onClick={generateQuiz}
+                >Generate
+                </button>
+            </div>
+            <hr/>
+            <div>
+                {twoColumnQuizProblem.map((item, i) => (<>{item}</>))}
+            </div>
+        </div>
     );
 }
 
