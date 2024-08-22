@@ -77,7 +77,7 @@ const NHM = () => {
                 <input
                   className="second-arg-box"
                 type="number"
-                onChange={(e) => {setSecondArg(e.target.value)}}
+                onChange={(e) => {setSecondArg(parseInt(e.target.value))}}
                 value={secondArg}
               />
           </div>
