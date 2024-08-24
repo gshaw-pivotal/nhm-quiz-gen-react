@@ -5,7 +5,8 @@ const NHM = () => {
     const numberOfProblems = 20;
 
     const [maxSumValue, setMaxSumValue] = useState(10);
-    const [secondArg, setSecondArg] = useState(1);
+    const [maxSecondArg, setMaxSecondArg] = useState(1);
+    const [secondArgRange, setSecondArgRange] = useState(false);
     const [twoColumnQuizProblem, setTwoColumnQuizProblem] = useState([]);
 
     const generateNumberInRange = (min, max) => {
@@ -18,29 +19,27 @@ const NHM = () => {
         for (let i = 0; i < numberOfProblems; i++) {
             let eqType = generateNumberInRange(1, 2);
             let secondArgFirst = generateNumberInRange(1, 2);
+            let secondArgValue = secondArgRange ? generateNumberInRange(0, maxSecondArg) : maxSecondArg;
             let firstArgValue;
 
             if (eqType === 1) {
                 // Addition
-                firstArgValue = generateNumberInRange(0, maxSumValue - secondArg);
+                firstArgValue = generateNumberInRange(0, maxSumValue - secondArgValue);
             } else {
                 // Subtraction
-                firstArgValue = generateNumberInRange(secondArg, maxSumValue);
+                firstArgValue = generateNumberInRange(secondArgValue, maxSumValue);
             }
 
             if (eqType === 1) {
                 // Addition
                 if (secondArgFirst === 1) {
-                    newQuizProblems.push(`${secondArg} + ${firstArgValue}`);
-                    console.log(`${secondArg} + ${firstArgValue}`);
+                    newQuizProblems.push(`${secondArgValue} + ${firstArgValue}`);
                 } else {
-                    newQuizProblems.push(`${firstArgValue} + ${secondArg}`);
-                    console.log(`${firstArgValue} + ${secondArg}`);
+                    newQuizProblems.push(`${firstArgValue} + ${secondArgValue}`);
                 }
             } else {
                 // Subtraction
-                newQuizProblems.push(`${firstArgValue} - ${secondArg}`);
-                console.log(`${firstArgValue} - ${secondArg}`);
+                newQuizProblems.push(`${firstArgValue} - ${secondArgValue}`);
             }
         }
 
@@ -85,14 +84,25 @@ const NHM = () => {
                 />
             </div>
             <div>
-                <span>Second Arg:</span>
+                <span>(Max) Second Arg:</span>
                 <input
                     className="second-arg-box"
                     type="number"
                     onChange={(e) => {
-                        setSecondArg(parseInt(e.target.value))
+                        setMaxSecondArg(parseInt(e.target.value))
                     }}
-                    value={secondArg}
+                    value={maxSecondArg}
+                />
+            </div>
+            <div>
+                <span>Use range 0 to max second arg value:</span>
+                <input
+                    className="second-arg-range-checkbox"
+                    type="checkbox"
+                    onChange={(e) => {
+                        setSecondArgRange(!secondArgRange)
+                    }}
+                    value={secondArgRange}
                 />
             </div>
             <div>

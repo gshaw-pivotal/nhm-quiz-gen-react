@@ -1,9 +1,16 @@
 .max-sum-value-box {
-    margin: 15px;
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .second-arg-box {
-    margin: 15px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.second-arg-range-checkbox {
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .generate-button {
